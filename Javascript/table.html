@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Table</title>
+</head>
+<body>
+
+<script>
+
+    var number = 100;   // starting number
+
+    document.write("<table border='1' cellpadding='8' cellspacing='0'>");
+
+    for (var i = 1; i <= 10; i++) {
+
+        document.write("<tr>");
+
+        // If row is odd
+        if (i % 2 != 0) {
+
+            for (var j = 1; j <= 10; j++) {
+
+                if (j % 2 != 0) {
+                    document.write("<td bgcolor='#FFB6C1'>" + number + "</td>");  // light pink
+                } else {
+                    document.write("<td bgcolor='white'>" + number + "</td>");
+                }
+
+                number--;
+            }
+
+        } 
+        else {   // If row is even
+
+            var tempNumber = number - 9;
+
+            for (var j = 1; j <= 10; j++) {
+
+                if (j % 2 != 0) {
+                    document.write("<td bgcolor='white'>" + tempNumber + "</td>");
+                } else {
+                    document.write("<td bgcolor='#FFB6C1'>" + tempNumber + "</td>");  // light pink
+                }
+
+                tempNumber++;
+            }
+
+            number = number - 10;
+        }
+
+        document.write("</tr>");
+    }
+
+    document.write("</table>");
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+
+    <script>
+        function calculate(formObj, type) {
+
+            var n1 = parseFloat(formObj.num1.value);
+            var n2 = parseFloat(formObj.num2.value);
+            var ans = 0;
+
+            // if operation not passed from button, take from dropdown
+            if (type == undefined) {
+                type = formObj.operation.value;
+            }
+
+            if (type == "add") {
+                ans = n1 + n2;
+            }
+            else if (type == "subtract") {
+                ans = n1 - n2;
+            }
+            else if (type == "multiply") {
+                ans = n1 * n2;
+            }
+            else if (type == "divide") {
+
+                if (n2 == 0) {
+                    ans = "Cannot divide by zero";
+                } else {
+                    ans = n1 / n2;
+                }
+            }
+
+            formObj.result.value = ans;
+        }
+    </script>
+
+</head>
+
+<body>
+
+<h2>Calculator using Dropdown</h2>
+
+<form name="form1">
+
+    Number 1:
+    <input type="text" name="num1"><br><br>
+
+    Number 2:
+    <input type="text" name="num2"><br><br>
+
+    Operation:
+    <select name="operation">
+        <option value="add">Add</option>
+        <option value="subtract">Subtract</option>
+        <option value="multiply">Multiply</option>
+        <option value="divide">Divide</option>
+    </select><br><br>
+
+    <input type="button" value="Calculate"
+           onclick="calculate(this.form)"><br><br>
+
+    Result:
+    <input type="text" name="result" readonly>
+
+</form>
+
+<br><hr><br>
+
+<h2>Calculator using Buttons</h2>
+
+<form name="form2">
+
+    Number 1:
+    <input type="text" name="num1"><br><br>
+
+    Number 2:
+    <input type="text" name="num2"><br><br>
+
+    <input type="button" value="Add"
+           onclick="calculate(this.form,'add')">
+
+    <input type="button" value="Subtract"
+           onclick="calculate(this.form,'subtract')">
+
+    <input type="button" value="Multiply"
+           onclick="calculate(this.form,'multiply')">
+
+    <input type="button" value="Divide"
+           onclick="calculate(this.form,'divide')">
+
+    <br><br>
+
+    Result:
+    <input type="text" name="result" readonly>
+
+</form>
+
+</body>
+</html>
