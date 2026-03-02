@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Counter Using Local Storage</title>
+</head>
+<body>
+    <p id="myid"></p>
+    <input type="button" value="Increment" onclick="increment()"/>
+    <input type="button" value="Decrement" onclick="decrement()"/>
+    <script>
+        var count = 0;
+        var countDisplay = document.getElementById("myid");
+        countDisplay.innerHTML = '<b>' + count + '</b>';
+        function increment() {
+            count += 1;
+            countDisplay.innerHTML = '<b>' + count + '</b>';
+            localStorage.setItem("counter",count)
+        }
+        function decrement() {
+            count -= 1;
+            countDisplay.innerHTML = '<b>' + count + '</b>';
+            localStorage.setItem("counter",count)
+        }
+    </script>
+</body>
+</html>
