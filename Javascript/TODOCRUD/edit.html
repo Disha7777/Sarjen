@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Task</title>
+</head>
+<body>
+
+<h2>Edit Task</h2>
+
+<form id="editForm">
+    Task Name:
+    <input type="text" id="taskName" required><br><br>
+
+    Priority:
+    <input type="radio" name="priority" value="High" required> High
+    <input type="radio" name="priority" value="Medium"> Medium
+    <input type="radio" name="priority" value="Low"> Low
+    <br><br>
+
+    <button type="submit">Update Task</button>
+</form>
+
+<script>
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+let params = new URLSearchParams(window.location.search);
+let index = params.get("index");
+
+// Load selected task
+document.getElementById("taskName").value = tasks[index].name;
+document.querySelector(`input[value="${tasks[index].priority}"]`).checked = true;
+
+document.getElementById("editForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let name = document.getElementById("taskName").value;
+    let priority = document.querySelector('input[name="priority"]:checked').value;
+
+    tasks[index].name = name;
+    tasks[index].priority = priority;
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    alert("Task Updated Successfully");
+
+    // Redirect back to list page
+    window.location.href = "list.html";
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task List</title>
+</head>
+<body>
+
+<h2>Task List</h2>
+
+<a href="index.html">Add New Task</a>
+<br><br>
+
+<table border="1" width="80%" cellpadding="10">
+    <tr>
+        <th>Task</th>
+        <th>Priority</th>
+        <th>Completed</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+
+    <tbody id="tableData"></tbody>
+</table>
+<script>
+var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+function showData()
+{
+    var data = "";
+
+    for(var i = 0; i < tasks.length; i++)
+    {
+        data += "<tr>";
+
+        data += "<td>" + tasks[i].name + "</td>";
+        data += "<td>" + tasks[i].priority + "</td>";
+
+        data += "<td>";
+        data += "<input type='checkbox' " + 
+                (tasks[i].completed ? "checked" : "") + 
+                " onchange='toggleComplete("+i+")'>";
+        data += "</td>";
+
+        data += "<td>";
+        data += "<button onclick='editTask("+i+")'>Edit</button>";
+        data += "</td>";
+
+        data += "<td>";
+        data += "<button onclick='deleteTask("+i+")'>Delete</button>";
+        data += "</td>";
+
+        data += "</tr>";
+    }
+
+    document.getElementById("tableData").innerHTML = data;
+}
+
+function deleteTask(index)
+{
+    tasks.splice(index,1);
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    showData();
+}
+
+function toggleComplete(index)
+{
+    tasks[index].completed = !tasks[index].completed;
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function editTask(index)
+{
+    window.location.href = "edit.html?index=" + index;
+}
+
+showData();
+
+</script>
+</body>
+</html>

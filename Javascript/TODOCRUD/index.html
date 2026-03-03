@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Task</title>
+</head>
+<body>
+
+<h2>Add Task</h2>
+
+<form onsubmit="addTask(event)">
+    Task Name:
+    <input type="text" id="taskName" required>
+    <br><br>
+
+    Priority:
+    <input type="radio" name="priority" value="High" required> High
+    <input type="radio" name="priority" value="Medium"> Medium
+    <input type="radio" name="priority" value="Low"> Low
+    <br><br>
+
+    <button type="submit">Add Task</button>
+    <a href="list.html">Go To Task List</a>
+
+</form>
+<script>
+function addTask(event)
+{
+    event.preventDefault();
+
+    // Get existing data from localStorage
+    var tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    var name = document.getElementById("taskName").value;
+
+    var priority = document.querySelector('input[name="priority"]:checked').value;
+
+    // Create object
+    var task = {
+        name: name,
+        priority: priority,
+        completed: false
+    };
+
+    tasks.push(task);
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    alert("Task Added Successfully");
+
+    document.getElementById("taskName").value = "";
+}
+</script>
+</body>
+</html>
