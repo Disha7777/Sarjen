@@ -1,0 +1,77 @@
+
+.theme-container {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.theme-content {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+
+.theme-toggle-btn {
+  padding: 12px 20px;
+  font-size: 16px;
+  margin: 20px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #646cff;
+  color: white;
+  transition: 0.3s;
+}
+
+.theme-toggle-btn:hover {
+  background: #535bf2;
+}
+
+.theme-demo-content {
+  margin-top: 20px;
+}
+
+.demo-cards {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.demo-card {
+  flex: 1;
+  padding: 15px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+/* Default (light) */
+.theme-container {
+  min-height: 100vh;
+  padding: 20px;
+  background: #ffffff;
+  color: #000;
+}
+
+/* Dark mode applied */
+body.dark .theme-container {
+  background: #1e1e1e;
+  color: #fff;
+}
+
+body.dark .demo-card {
+  background: #2c2c2c;
+  color: #fff;
+}
+
+body.light .demo-card {
+  background: #f5f5f5;
+  color: #000;
+}
+body.dark .theme-container {
+  background: #1e1e1e;
+  color: white;
+}
+
+body.light .theme-container {
+  background: #ffffff;
+  color: black;
+}
