@@ -18,20 +18,20 @@
   box-sizing: border-box;
 }
 
+/* ✅ CHANGE: removed any fixed background */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto';
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
 }
 
+/* Links */
 a {
   text-decoration: none;
 }
 
-/* Animation Classes */
+/* Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -47,7 +47,7 @@ a {
   animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Scrollbar Styles */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -66,7 +66,7 @@ a {
   background: #555;
 }
 
-/* Common Form Styles */
+/* Forms */
 .form-group {
   margin-bottom: 1rem;
 }
@@ -74,7 +74,7 @@ a {
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: inherit; /* ✅ CHANGE: support dark mode */
   font-weight: 500;
 }
 
@@ -85,6 +85,8 @@ a {
   border-radius: 5px;
   font-size: 1rem;
   transition: border-color 0.3s;
+  background: transparent; /* ✅ CHANGE */
+  color: inherit;          /* ✅ CHANGE */
 }
 
 .form-input:focus {
@@ -92,6 +94,7 @@ a {
   border-color: #646cff;
 }
 
+/* Buttons */
 button {
   padding: 10px 20px;
   border: none;
@@ -105,24 +108,28 @@ button:hover {
   transform: translateY(-2px);
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
-/* Default (Light) */
-body {
-  background: white;
-  color: black;
-  transition: 0.3s;
+
+/* ========================= */
+/* ✅ LIGHT MODE */
+/* ========================= */
+body.light {
+  background-color: #ffffff !important;
+  color: #000 !important;
 }
 
-/* Dark Mode */
+/* ========================= */
+/* ✅ DARK MODE */
+/* ========================= */
 body.dark {
-  background: #121212;
-  color: white;
+  background-color: #121212 !important;
+  color: #ffffff !important;
 }
 
-/* Navbar fix */
-body.dark .navbar {
-  background: #1f1f1f !important;
+/* ✅ CHANGE: apply theme to cards / containers globally */
+body.dark .main-content {
+  background-color: #121212;
 }
 
-body.light .navbar {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+body.light .main-content {
+  background-color: #ffffff;
 }
